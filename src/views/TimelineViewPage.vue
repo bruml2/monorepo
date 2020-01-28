@@ -1,7 +1,6 @@
 <template>
-  <div class="home">
-    <h2>This is the home router view.</h2>
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div class="timelineViewPage">
+    <HelloWorld msg="Welcome to The TimelineView Page" />
   </div>
 </template>
 

@@ -1,5 +1,9 @@
 ## The TimelineView Component
 
+### ToDo
+
+Add the panzoom library: https://github.com/anvaka/panzoom
+
 ### The div#timelineViewContainer (root).
 
 It's offsetWidth/clientWidth (no border) is 1300px by default or set by the parent with a prop. It's height is sufficient to contain its children.

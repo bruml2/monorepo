@@ -1,6 +1,9 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+
 import Home from "../views/Home.vue";
+import TimelineViewPage from "../views/TimelineViewPage.vue";
+import MiscComponents from "../views/MiscComponents.vue";
 
 Vue.use(VueRouter);
 
@@ -9,6 +12,16 @@ const routes = [
     path: "/",
     name: "home",
     component: Home
+  },
+  {
+    path: "/timelineView",
+    name: "timelineView",
+    component: TimelineViewPage
+  },
+  {
+    path: "/misc",
+    name: "MiscComponents",
+    component: MiscComponents
   },
   {
     path: "/about",
