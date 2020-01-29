@@ -6,7 +6,7 @@
 
 <script>
   export default {
-    
+    name: "miscComponents"
   }
 </script>
 
@@ -14,5 +14,4 @@
 h3 {
   color: red;
 }
-
 </style>
