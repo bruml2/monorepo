@@ -1,18 +1,31 @@
 <template>
-  <div class="home">
-    <h2>This is the home router view.</h2>
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div class="homeView">
+    <h2>This is the Home router view.</h2>
+    <p>The repository from which this app is built contains the master (dev) copies of all of the components developed by B Ruml, each with a page demonstrating expected uses.</p>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+// import HelloWorld from "@/components/HelloWorld.vue";
 
 export default {
   name: "home",
   components: {
-    HelloWorld
+    // HelloWorld
   }
 };
 </script>
+
+<style>
+.homeView {
+  font-family: Palatino, "New Times Roman", Times, serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  width: 70%
+}
+.homeView h2 {
+  color: red;
+}
+</style>

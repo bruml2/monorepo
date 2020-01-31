@@ -1,29 +1,11 @@
 # monorepo
 
-## Project setup
-```
-npm install
-```
+### The Component Development Monorepository.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+This app demonstrates the use of each of the components:
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your unit tests
-```
-npm run test:unit
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
+1. RouterLink: a div containing <router-link> tags for each route with a linkText property.
+2. TimelineView: a render of the timeline .  (must install d3 node_modules)
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).

@@ -133,7 +133,7 @@
       }
     },
     created: function() {
-      // merge timeline prop into this.tl as target;
+      // merge timeline prop into the default this.tl (in data);
       Object.assign(this.tl, this.timeline)
     },
     mounted: function() {
@@ -379,7 +379,7 @@
 </script>
 
 <style>
-/* the prolog is temporary */
+/* the prolog is for development */
 .prolog {
   padding: 8px 15px;
   background: wheat;

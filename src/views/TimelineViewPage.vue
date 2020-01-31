@@ -2,17 +2,13 @@
   <div class="timelineViewPage">
     <h2>"Welcome to The TimelineView Page"</h2>
     <div class="pageIntro">
-      This app demonstrates multiple timeline components (in blue borders) on one page.
-    </div>
-    <div class="testBtns">
-      <span>Demonstrating that changes within parent affect the "TimelineA" TimelineView component:</span>
-      &nbsp; &nbsp;
+      <p>This page demonstrates that multiple timeline components (in blue borders) may appear on one page.</p>
+      <p>It also demonstrates that click events within this parent component affect the "TimelineA" TimelineView component:</p>
       <button class="button" @click="changeProperty">Change Title Value</button>
-      &nbsp; &nbsp;
       <button class="button" @click="addProperty">Add a new property</button>
-      &nbsp; &nbsp;
       <button class="button" @click="addEra">Add a new era</button>
     </div>
+
     <TimelineView timelineID="timelineA" :timeline="timelineA" :tvcWidth="tvcWidth" :showProlog="true" />
     <div style="height: 40px;"></div>
     <TimelineView timelineID="timelineB" :timeline="timelineB" :tvcWidth="tvcWidth" />
@@ -143,15 +139,13 @@ export default {
   margin-top: 20px;
 }
 .pageIntro {
-  padding: 20px 30px;
+  margin-bottom: 30px;
+  padding: 15px;
   border: 3px solid red;
+  font-size: 1.5rem;
 }
-#btns {
-  margin: 1rem;
-  padding: 1rem;
-  border: 2px solid teal;
-}
-#btns .button {
-  font-size: 1.2rem;
+.button {
+  font-size: 1.6rem;
+  margin-right: 30px;
 }
 </style>

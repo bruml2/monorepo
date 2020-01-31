@@ -14,4 +14,10 @@ The new MonoRepo is intended to be the development environment for all my Vue si
 
 1. Created a new GitHub repo "monorepo".
 2. Created a new VueCLI project with router (each page demonstrates the use of one component).
-3.
+3. After creation, added sass (npm install -D sass)
+
+
+### Using SCSS (sass).
+
+Attempting to use SCSS in all .vue files.
+
