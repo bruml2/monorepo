@@ -4,6 +4,7 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import About from "../views/About.vue";
 import AppNavHeaderPage from "../views/AppNavHeaderPage.vue";
+import RouterLinksPage from "../views/RouterLinksPage.vue";
 import TimelineViewPage from "../views/TimelineViewPage.vue";
 import MiscComponents from "../views/MiscComponents.vue";
 
@@ -31,16 +32,33 @@ const routes = [
     component: About
   },
   {
-  path: "/appNavHeader",
-  name: "appNavHeader",
-  linkText: "AppNavHeader",
-  component: AppNavHeaderPage
+    path: "/appNavHeader",
+    name: "appNavHeader",
+    linkText: "AppNavHeader",
+    component: AppNavHeaderPage
+  },
+  {
+    path: "/routerLinks",
+    name: "routerLinks",
+    linkText: "RouterLinks",
+    component: RouterLinksPage
   },
   {
     path: "/timelineView",
     name: "timelineView",
     linkText: "TimelineView",
     component: TimelineViewPage
+  },
+  {
+    path: "/testA",
+    name: "testA",
+    component: About
+  },
+  {
+    path: "/testB",
+    name: "testB",
+    linkText: undefined,
+    component: About
   },
   {
     path: "/misc",

@@ -1,8 +1,8 @@
 <template>
     <div class="routerLinks">
-      <template v-for="route in routesArr">
+      <template v-for="(route, idx) in routesArr">
         <!-- `<router-link>` will be rendered as an `<a>` tag by default -->
-        <router-link :to="route[0]" :key="route[1]">{{route[1]}}</router-link> |
+        <router-link :to="route[0]" :key="idx">{{route[1]}}</router-link> {{ idx == routesArr.length - 1 ? "" : delimiter }}
       </template>
     </div>
 </template>
@@ -11,11 +11,20 @@
   // add at bottom of router/index.js: "export {routes}";
   // add a new property to each route:
   //     linkText: "Home",
+  // to omit a route from the list, don't add a linkText property
+  //     or or give linkText the value undefined;
   import { routes } from "@/router/index.js"
   export default {
+    props: {
+      delimiter: {
+        type: String,
+        default: " | "
+      }
+    },
     computed: {
       routesArr() {
-        return routes.map( (route) => [ route.path, route.linkText ])
+        return routes.filter( route => route.linkText !== undefined)
+          .map( (route) => [ route.path, route.linkText ])
       }
     }
   }
@@ -23,7 +32,6 @@
 
 <style lang="scss">
 .routerLinks {
-  margin-top: 7px;
   a {
     font-weight: bold;
     color: #2c3e50;
