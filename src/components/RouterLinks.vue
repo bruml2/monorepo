@@ -8,8 +8,9 @@
 </template>
 
 <script>
+// version 1.0; 2-1-2020;
   // add at bottom of router/index.js: "export {routes}";
-  // add a new property to each route:
+  // for each route to be included, add the new property:
   //     linkText: "Home",
   // to omit a route from the list, don't add a linkText property
   //     or or give linkText the value undefined;

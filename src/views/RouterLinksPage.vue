@@ -2,32 +2,25 @@
   <div class="routerLinksPage">
     <h3>The Router Links Page</h3>
     <h5>Motivation.</h5>
-    <p>If the standard VueCLI-generated application includes Vue router, the App.vue file will contain this code:
+    <p>If the standard VueCLI-generated application includes Vue router, the App.vue file contains this template:
 <pre><code>
-  d3.select(this.rootEl).select('.eraLabelsGrp')
-      .selectAll("div")
-      .data(tl.erasArr)
-      .enter()
-    .append("div")
-      .attr("class", "eraLabel")
-      .attr("id", d => d.label.replace(/\W/g, "") + "Label")
-      .style("left", d => getLeftAndStoreWidth(d, this))
-      .style("top", d => tl.eraTopMargin + 10 + (d.topY * tl.eraHeight) + d.voffset + "px")
-      .style("width", d => d.width + "px")
-      .text(d => d.label)
-      .style("font-size", this.eraLabelsFontSize) + "px"
-  tempWidthSpan.remove();
+  &lt;div id="app">
+    &lt;div id="nav">
+      &lt;router-link to="/">Home&lt;/router-link> |
+      &lt;router-link to="/about">About&lt;/router-link>
+    &lt;/div>
+    &lt;router-view/>
+  &lt;/div>
 
 </code></pre>
-    But this violates the DRY principle as it repeats the contents of the <code>router/index.js</code> file.
+    But <code>div#nav</code> violates the DRY principle as it repeats the contents of the <code>router/index.js</code> file.
     </p>
     <p>It would be superior to have a component which reads the route array and generates the <code>&lt;router-link&gt;</code> elements because any changes to the routes would be reflected in the series of links.</p>
-    <p>Three items of configuration are available.  First, since the text of the <code>&lt;router-link&gt;</code> may be independent of any other route value, it needs to be specified in a new route property: <code>linkText: "Foo Bar"</code>. Second, if a route should be omitted from the series of links, the linkText property is either omitted for the route or set to the value <code>undefined</code>. Finally, the string which should separate the links, if different from the default (" | "), may be specified in the <code>delimiter</code> prop of the component.
+    <p>Three items of configuration are available.  First, since the text of the <code>&lt;router-link&gt;</code> may be independent of any other route value, it needs to be specified in a new route property: <code>linkText: "Foo Bar"</code>. Second, if a route is to be omitted from the series of links, the linkText property of the route is either omitted or set to the value <code>undefined</code>. Finally, the string which should separate the links, if different from the default (" | "), may be specified in the <code>delimiter</code> prop of the component.
     </p>
     <p>Here's an example with the delimiter " ** ":</p>
     <br />
     <span class="rlExample"><RouterLinks delimiter=" ** "></RouterLinks></span>
-    
   </div>
 </template>
 
@@ -44,7 +37,7 @@
   font-family: Palatino, Times, "Times New Roman", Georgia, serif;
   max-width: 75rem;
   margin: 2rem;
-  padding: 1rem 3rem;
+  padding: 1rem 3rem 3rem 3rem;
   border: 3px solid crimson;
   border-radius: 10px;
 }
@@ -58,7 +51,10 @@ h5 {
 }
 p {
   font-size: 1.5rem;
+  line-height: 1.8rem;
   text-indent: 1rem;
+  margin-block-start: 0;
+  margin-block-end: 0.6rem;
 }
 pre {
   font-family: 'Monaco', monospace;
