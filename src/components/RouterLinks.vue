@@ -2,7 +2,8 @@
     <div class="routerLinks">
       <template v-for="(route, idx) in routesArr">
         <!-- `<router-link>` will be rendered as an `<a>` tag by default -->
-        <router-link :to="route[0]" :key="idx">{{route[1]}}</router-link> {{ idx == routesArr.length - 1 ? "" : delimiter }}
+        <router-link :to="route[0]" :key="idx">{{route[1]}}</router-link>
+        {{ idx == routesArr.length - 1 ? "" : delimiter }}
       </template>
     </div>
 </template>
