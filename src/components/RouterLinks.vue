@@ -8,7 +8,8 @@
 </template>
 
 <script>
-// version 1.0; 2-1-2020;
+  // version 1.0; 2-1-2020;
+  // div.routerLinks is required to compile;
   // add at bottom of router/index.js: "export {routes}";
   // for each route to be included, add the new property:
   //     linkText: "Home",
