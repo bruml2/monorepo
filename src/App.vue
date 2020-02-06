@@ -2,7 +2,7 @@
   <div id="app">
     <AppNavHeader>B Ruml's Vue Component Monorepo</AppNavHeader>
     <div class="testRouterLinks">
-      <RouterLinks delimiter=" ?? "></RouterLinks>
+      <RouterLinks separator=" ?? " activeLinkColor="red"></RouterLinks>
     </div>
     <router-view />
   </div>
@@ -40,7 +40,7 @@ html {
   margin: 5px auto;
   padding: 10px;
   border: 3px solid gold;
-  align: center;
+  text-align: center;
 
 }
 </style>

@@ -1,11 +1,12 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
-import Home from "../views/Home.vue";
-import About from "../views/About.vue";
+import HomePage from "../views/HomePage.vue";
+import AboutPage from "../views/AboutPage.vue";
 import AppNavHeaderPage from "../views/AppNavHeaderPage.vue";
 import RouterLinksPage from "../views/RouterLinksPage.vue";
 import TimelineViewPage from "../views/TimelineViewPage.vue";
+import TestingPage from "../views/TestingPage.vue";
 import MiscComponents from "../views/MiscComponents.vue";
 
 // 1. Use plugin.
@@ -23,13 +24,13 @@ const routes = [
     path: "/",
     name: "home",
     linkText: "Home",
-    component: Home
+    component: HomePage
   },
   {
     path: "/about",
     name: "about",
     linkText: "About",
-    component: About
+    component: AboutPage
   },
   {
     path: "/appNavHeader",
@@ -52,13 +53,19 @@ const routes = [
   {
     path: "/testA",
     name: "testA",
-    component: About
+    component: AboutPage
   },
   {
     path: "/testB",
     name: "testB",
     linkText: undefined,
-    component: About
+    component: AboutPage
+  },
+  {
+    path: "/testing",
+    name: "Testing",
+    linkText: "Testing",
+    component: TestingPage
   },
   {
     path: "/misc",

@@ -2,8 +2,8 @@
   <div class="routerLinksPage">
     <h3>The Router Links Page</h3>
     <h5>Motivation.</h5>
-    <p>If the standard VueCLI-generated application includes Vue router, the App.vue file contains this template:
-<pre><code>
+    <p>In a standard VueCLI-generated application which includes Vue router, the App.vue file contains this template:
+<pre><code v-pre>
   &lt;div id="app">
     &lt;div id="nav">
       &lt;router-link to="/">Home&lt;/router-link> |
@@ -13,14 +13,73 @@
   &lt;/div>
 
 </code></pre>
-    But <code>div#nav</code> violates the DRY principle as it repeats the contents of the <code>router/index.js</code> file.
-    </p>
-    <p>It would be superior to have a component which reads the route array and generates the <code>&lt;router-link&gt;</code> elements because any changes to the routes would be reflected in the series of links.</p>
-    <p>Three items of configuration are available.  First, since the text of the <code>&lt;router-link&gt;</code> may be independent of any other route value, it needs to be specified in a new route property: <code>linkText: "Foo Bar"</code>. Second, if a route is to be omitted from the series of links, the linkText property of the route is either omitted or set to the value <code>undefined</code>. Finally, the string which should separate the links, if different from the default (" | "), may be specified in the <code>delimiter</code> prop of the component.
-    </p>
-    <p>Here's an example with the delimiter " ** ":</p>
+    which looks like this when rendered:
+    <img alt="home|about links" src="../assets/Home|About.png" style="height: 1.8rem">
     <br />
-    <span class="rlExample"><RouterLinks delimiter=" ** "></RouterLinks></span>
+    But the contents of <code>div#nav</code> violate the DRY principle as they repeat the paths from the <code>router/index.js</code> file. Ideally, magic-numbers and magic-strings appear only once in a codebase so that 1) multiple instances cannot be inconsistent and 2) they can be modified application-wide with a single edit.
+    </p>
+    <p>It would be superior to have a component which reads the route array and generates the <code>&lt;router-link&gt;</code> elements so that any changes to the routes would be reflected in the series of links.</p>
+    <p>Three items of configuration are available.  First, since the text of the <code>&lt;router-link&gt;</code> may be independent of the value of any other route property, it needs to be specified in a new route property: <code>linkText: "Foo Bar"</code>. Second, if a route is to be omitted from the series of links, the linkText property of the route is either omitted or set to the value <code>undefined</code>. Finally, the string which should separate the links, if different from the default (" | "), may be specified in the <code>separator</code> prop of the component.
+    </p>
+    <p>Here's an example with the separator value of " ** ":</p>
+    <br />
+    <span class="rlExample">
+      <RouterLinks separator=" ** "></RouterLinks>
+    </span>
+    <br />
+    <p>Here's the entire contents of the single-file-component <code>.vue</code> file:</p>
+    <div class="vuecode">
+    <pre><code v-pre>
+&lt;template>
+  &lt;div class="routerLinks">
+    &lt;template v-for="(link, idx) in linksArr">
+      &lt;!-- `&lt;router-link>` will be rendered as an `&lt;a>` tag by default -->
+      &lt;router-link :to="link[0]" :key="idx">{{link[1]}}&lt;/router-link>
+      {{ idx == linksArr.length - 1 ? "" : separator }}
+    &lt;/template>
+  &lt;/div>
+&lt;/template>
+
+&lt;script>
+  // version 1.2; 2-5-2020;
+  // add at bottom of router/index.js: "export {routes}";
+  // for each route to be included, add the new property:
+  //     linkText: "Home",
+  // to omit a route from the list, don't add a linkText property
+  //     or or give linkText the value undefined;
+  // div.routerLinks is required (template cannot be the root element;
+  import { routes } from "@/router/index.js"
+  export default {
+    props: {
+      separator: {
+        type: String,
+        default: " | "
+      }
+    },
+    computed: {
+      linksArr() {
+        return routes.filter( route => route.linkText !== undefined)
+          .map( (route) => [ route.path, route.linkText ])
+      }
+    }
+  }
+&lt;/script>
+
+&lt;style lang="scss">
+.routerLinks {
+  a {
+    font-weight: bold;
+    color: #2c3e50;
+
+    /* class is added to router-link anchor tag when active */
+    &.router-link-exact-active {
+      color: #42b983;
+    }
+  }
+}
+&lt;/style>
+    </code></pre>
+    </div>
   </div>
 </template>
 
@@ -57,24 +116,24 @@ p {
   margin-block-end: 0.6rem;
 }
 pre {
-  font-family: 'Monaco', monospace;
+  display: block;
   padding: 0 1em;
-  background-color: #D1D1D0;
-  overflow: auto;
+  border: 1px solid #bebab0;
+  border-radius: 5px;
+  background-color: #eee;
 }
 code {
-  font-family: Monaco, monospace;
-  font-size: 1.5rem;
+  font-family: 'Courier New','Monaco', monospace;
+  font-weight: 600;
   line-height: 100%;
-  /* background-color: #eee; */
-  padding: 0.2em;
   letter-spacing: -0.05em;
   word-break: normal;
 }
 pre code {
-  border: none;
-  background: none;
-  font-size: calc(1.5rem * 0.875);
+  overflow: auto;
+  padding: 0.2em;
+  font-size: 1.2rem;
+  font-weight: bold;
   letter-spacing: normal;
   word-break: break-all;
 }

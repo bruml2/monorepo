@@ -10,10 +10,10 @@
 
 <script>
   // version 1.3; 2-6-2020;
-  // add at bottom of router/index.js: "export {routes}";
-  // for each route to be included, add the new property:
+  // Add at bottom of router/index.js: "export {routes}";
+  // For each route to be included, add the new property:
   //     linkText: "Home",
-  // to omit a route from the list, don't add a linkText property
+  // To omit a route from the list, don't add a linkText property
   //     or or give linkText the value undefined;
   // div.routerLinks is required (template cannot be the root element;
   import { routes } from "@/router/index.js"

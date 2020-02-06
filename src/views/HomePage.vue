@@ -23,9 +23,12 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  width: 70%
+  width: 70%;
+  padding: 10px 30px;
+  border: 3px solid crimson;
 }
 .homeView h2 {
+  text-align: center;
   color: red;
 }
 </style>
