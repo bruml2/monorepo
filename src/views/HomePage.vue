@@ -1,7 +1,7 @@
 <template>
   <div class="homeView">
     <h2>This is the Home router view.</h2>
-    <p>The repository from which this app is built contains the master (dev) copies of all of the components developed by B Ruml, each with a page demonstrating expected uses.</p>
+    <p>The repository from which this app is built (<code>https://github.com/bruml2/monorepo/</code> &nbsp; [<a href="https://github.com/bruml2/monorepo/">link</a>]) contains the master (dev) copies of all of the components developed by B Ruml, each with a page demonstrating expected uses.</p>
   </div>
 </template>
 
@@ -30,5 +30,8 @@ export default {
 .homeView h2 {
   text-align: center;
   color: red;
+}
+.homeview code {
+  font-size: inherit;
 }
 </style>

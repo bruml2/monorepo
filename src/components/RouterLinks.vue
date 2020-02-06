@@ -1,15 +1,14 @@
 <template>
   <div class="routerLinks">
     <template v-for="(link, idx) in linksArr">
-      <!-- `<router-link>` will be rendered as an `<a>` tag by default -->
-      <router-link :to="link[0]" :key="idx" :style="{'color': linkColor(idx)}" ref="links">{{link[1]}}</router-link>
+      <router-link :to="link[0]" :key="idx">{{link[1]}}</router-link>
       {{ idx == linksArr.length - 1 ? "" : separator }}
     </template>
   </div>
 </template>
 
 <script>
-  // version 1.3; 2-6-2020;
+  // version 1.3; 2-6-2020; (removed activeLinkColor prop)
   // Add at bottom of router/index.js: "export {routes}";
   // For each route to be included, add the new property:
   //     linkText: "Home",
@@ -22,14 +21,6 @@
       separator: {
         type: String,
         default: " | "
-      },
-      activeLinkColor: {
-        type: String,
-        default: "#42b983"
-      },
-      inactiveLinkColor: {
-        type: String,
-        default: "#2c3e50"
       }
     },
     computed: {
@@ -37,19 +28,6 @@
         return routes.filter( route => route.linkText !== undefined)
           .map( (route) => [ route.path, route.linkText ])
       }
-    },
-    methods: {
-      linkColor(idx) {
-        // there will be no refs on initial render;
-        if (!this.$refs.links) return this.inactiveLinkColor
-        let el = this.$refs.links[idx].$el
-        return el.classList.contains("router-link-exact-active") ?
-          this.activeLinkColor : this.inactiveLinkColor
-      }
-    },
-    mounted() {
-      // Force the instance to render a second time to generate refs;
-      this.$forceUpdate();
     }
   }
 </script>
@@ -58,6 +36,12 @@
 .routerLinks {
   a {
     font-weight: bold;
+    color: #2c3e50;
+
+    /* class is added to router-link anchor tag when active */
+    &.router-link-exact-active {
+      color: #42b983;
+    }
   }
 }
 </style>
